@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Uni Assist</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #FFFFFF; /* White background */
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .grid-background {
+        width: 100%;
+        height: 1312px;
+        height: 150vh;
+        background-image:
+            linear-gradient(to right, rgb(0,0,0,.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(0,0,0,.1) 1px, transparent 1px);
+        background-size: calc(100% / 9) calc(100% / 12); /* 9 blocks from left to right */
+        position: relative;
+    }
+    h3 {
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding-top:5px;
+    }
+    i {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    p {
+        white-space: pre;
+        color: #525252;
+        font-weight: 600;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    p b {
+        color: black;
+        font-weight: 700;
+    }
+    .topleft {
+        margin-top: 10%;
+        margin-left: 11%;
+        height: 0px;
+    }
+    .topright {
+        margin-top:7.5%;
+        margin-right:25.7%;
+        height: 0px;
+        display: flex;
+        justify-content: start;
+        align-items: end;
+        flex-direction: column;
+    }
+    .group {
+        width: auto;
+    }
+    h1 {
+        margin-left: 10%;
+        margin-top: 4%;
+        white-space: pre;
+        font-size: 325px;
+        font-size: 22vw;
+        letter-spacing: 1px;
+        line-height: 320px;
+        line-height: 22vw;
+    }
+    .bottom_b {
+        border-bottom: 1px solid #bebebe;
+    }
+    .top_b {border-top: 1px solid #bebebe;} .left_b {border-left: 1px solid #bebebe;} .right_b {border-right: 1px solid #bebebe;}
+    .header {
+        width: 100vw;
+        border-top: 1px solid #D9D9D9;
+        border-bottom: 1px solid #D9D9D9;
+        border-bottom: 1px solid #bebebe;
+        height:5px;
+        padding: 45px 0;
+    }
+    .header i {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    /*.header .end {
+    }*/
+    .header .mid {
+        gap: 25px;
+        width: 100%;
+    }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mid .tag, .end .tag {
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        padding: 5px 10px;
+    }
+    .row {
+        display: flex;
+    }
+    .row_el {
+        gap: 129px;
+    }
+    .hov:hover {
+        color: rgb(77, 77, 77);
+        text-decoration: underline;
+    }
+    .question_mark {
+        position: absolute;
+        right: 15%;
+        top: 10%;
+        width: 0;
+        height: 0;
+        display: flex;
+        font-size: 25px;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 25px;
+        border-radius: 100%;
+        border: 2px solid #9a9a9a;
+    }
+    .dark-shaddow-top {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100vw;
+        height: 125px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.332), transparent 55%);
+    }
+    .card_w_cards {
+        display: flex;
+        flex-direction: column;
+    }
+    .card_w_cards .inside_card {
+        padding: 25px 170px 25px 25px;
+    }
+    .inside_card img {
+        border-radius: 250px;
+        padding: 0;
+        width: 65px;
+        height: 65px;
+    }
+    .inside_card .row {
+        padding-top: 15px;
+    }
+    .inside_card p:nth-child(0) {
+        font-weight: 400; color: #333333;
+    }
+    .inside_card p:nth-child(2) {
+        padding: 0 15px;
+        margin-top: 5px;
+        font-weight: 400; color: #101010;
+    }
+    .inside_card p:nth-child(1) {
+        padding: 0 15px;
+        margin-top: 10px;
+    }
+    .inside_card p {
+        color: black;
+    }
+    .border-radius-card {
+        border-radius: 10px;
+    }
+    .inside_card .text_short p {
+        font-weight: 400; color: #101010;
+    }
+    .dark-tag {
+        margin: 25px; background-color: black; color: white; padding: 8px 25px;
+    }
+    .three-grids {
+        width: 100vw;
+        gap: 25px;
+        padding: 55px;
+    }
+    .three-grids div {
+        width: 100%;
+        padding: 25px;
+    }
+    .three-grids p {
+        font-size: 15px;
+    }
+    .hover-angle i {
+        font-size: 25px;
+    }
+    .hover-angle {
+        cursor: pointer;
+        margin-left: 0px;
+        gap: 255px;
+    }
+    .hover-angle:hover {
+        transition: .5s;
+        padding-left: 25px;
+    }
+    .mainText h1 {
+        font-size: 350px;
+        font-size: 22.6vw;
+        margin-left: -50px;
+        margin-right: 95px;
+        font-weight: 800;
+    }
+    #reviews {
+        flex-direction: row;
+    }
+    .review-btn {
+        display: none;
+    }
+    @media screen and (max-width: 627px) {
+        .grid-background {
+            width: 100%;
+            height: 1100px;
+            background-image:
+            linear-gradient(to right, rgb(0,0,0,.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(0,0,0,.1) 1px, transparent 1px);
+            background-size: calc(100% / 4) calc(100% / 6); /* 9 blocks from left to right */
+            position: relative;
+        }
+        .row_el {
+            margin-top: 135px;
+            gap: 100%;
+        }
+        .mainText {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+        .mainText h1 {
+            padding: 0;
+            margin: 0 0;
+            margin-top: 38vh;
+        }
+        .mainText h3 {
+            display: none;
+        }
+        .three-grids div {
+            padding: 0;
+        }
+        .three-grids {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            padding: 0 54px;
+        }
+        .review-btn {
+            display: flex;
+        }
+        #reviews, .hide {
+            display: none;
+        }
+        .topright {
+            display: none;
+        }
+    }
+</style>
+<body>
+    <!--div class="dark-shaddow-top"></div-->
+    <div class="grid-background">
+    <a class="question_mark">?</a>
+        <div class="row" style="gap: 70px;">
+        <div class="group topleft" style="margin-top: 5.5%;">
+            <i>He says,</i>
+            <h3>Akram</h3>
+        <p style="max-width: 40%; text-wrap: wrap;"> 
+"An online community of students helping each other out can have a tremendous impact--not just on learning, but on how we approach challenges together. It fosters collaboration, innovation, and a sense of shared purpose that extends far beyond the classroom."
+
+<b>pakistan</b></p>
+        </div>
+    </div>
+        <div class="group topright">
+            <div>
+            <i>She says,</i>
+            <h3>Madiha</h3>
+        <p style="max-width: 212px; text-wrap: wrap;"> 
+"This website has solved countless problems for students aiming to study abroad. With the guidance of more experienced peers, their choices are now simplified, making the entire process clearer and more approachable. It's a community-driven platform where students help each other succeed."
+
+<b>pakistan</b></p>
+</div>
+
+
+<div>
+<p style="max-width: 212px; text-wrap: wrap;">
+
+The Thing is we should help everyone out to get out of this shit country shouldn't we
+
+<b>Available for <b style="font-weight: 800;">All</b> Pakistani Students.</b></p>
+</div>
+
+        </div>
+        <div class="center mainText">
+        <h3 style="transform: rotate(-90deg); width: 100vw; height: 100%;">A changing AESTHETIC</h3>
+        <h1>UNI.
+ASSIST</h1>
+</div>
+<br><br>
+<br>
+    <div class="row three-grids">
+        <div>
+            <div>
+                <i>Free Consultancy</i>
+                <h3 class="hover-angle">Masters <i class="fa fa-solid fa-angle-right"></i></h3>
+            <p> 
+The Thing is we should help everyone
+out to get out of this shit country shouldn't we
+</p>
+            </div>
+    
+        </div>
+        
+        <div>
+            <div>
+                <i>Free Consultancy</i>
+                <h3 class="hover-angle">Bachelors <i class="fa fa-solid fa-angle-right"></i></h3>
+            <p>
+The Thing is we should help everyone
+out to get out of this shit country shouldn't we
+</p>
+            </div>
+    
+        </div>
+
+        <div>
+            <div>
+                <i>Free Consultancy</i>
+                <h3 class="hover-angle">PHD <i class="fa fa-solid fa-angle-right"></i></h3>
+            <p> 
+The Thing is we should help everyone
+out to get out of this shit country shouldn't we
+</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <div class="center header">
+        <div class="mid center">
+            <i class="tag">Pricing</i>
+            <i>Solutions</i>
+            <i class="hide">Community</i>
+            <i class="hide">Resources</i>
+            <i class="hide">Pricing</i>
+            <i class="hide">Contact</i>
+        </div>
+        <div class="end">
+            <i class="dark-tag border-radius-card">Login</i>
+        </div>
+    </div>
+    <br><br>
+<br>
+
+    <div class="row three-grids">
+        <div>
+            <h3 style="font-size: 45px; letter-spacing: -1px; font-weight: 600; text-align: start;">Latest reviews,</h3>
+            <h3 style="font-size: 45px; letter-spacing: -1px; font-weight: 600; text-align: start;">From some of</h3>
+            <h3 style="font-size: 45px; letter-spacing: -1px; font-weight: 600; text-align: start;">our Customers</h3>
+        </div>
+        <div>
+
+<p>
+<b>Be sure to check out our success
+stories!</b> Many students have used
+our website to find guidance and
+support in applying to universities
+and schools abroad. You'll find
+inspiring examples of how they
+received help and achieved their
+academic goals.
+</p>
+        </div>
+        <div>
+<p>
+<b>There is currently no dedicated
+section on our platform for users
+to leave reviews</b>. However,
+we actively read and consider
+feedback shared across various
+channels, including newsletters,
+WhatsApp groups, and student
+communities. <b>You can join
+these communities through links
+provided in our newsletters</b>,
+where you'll have the opportunity
+to share your thoughts and
+leave reviews directly with us.
+We value all the input and use
+it to improve our services!
+</p>
+        </div>
+    </div>
+    <div class="card_w_cards">
+        <div id="reviews" class="row center" style="gap: 64px;">
+            
+        </div>
+        <i class="review-btn dark-tag border-radius-card">Reviews</i>
+    </div>
+    <br><br><br><br>
+    <br><br><br><br>
+    <div class="center" style="flex-direction: column;">
+        <h3>Follow the latest News</h3>
+        <p style="color: #5c5c5c; font-size: 20px;">With our daily newsletter</p>
+        <br>
+        <div class="center">
+            <input placeholder="you@email.com" class="fa-not-equal border-radius-card top_b bottom_b left_b right_b" style="padding: 5px 15px; height: 55px;" type="text">
+            <p class="dark-tag border-radius-card" style="font-size: 17px; padding: 15px; font-weight: 400;">Submit</p>
+        </div>
+    </div>
+        <br><br><br><br>
+        <div class="grid-background">
+        <br><br><br><br>
+        <div class="row center" style="width: 100vw;">
+            <h1 style="width: 45%; text-align: start; padding: 0; margin: 0 25px; line-height: 25px; margin-top: 0; font-size: 14vw;">How</h1>
+            <p style="text-align: start; width: 100%;">THIS WORKS
+A Community of Students whose nee
+are always are our first Priority
+and they are Fulfilled from a click of
+a Button, Leave a 
+</p>
+        </div>
+        <div class="row center" style="width: 100vw;">
+            <p style="text-align: end; width: 100%;">THIS WORKS
+A Community of Students whose nee
+are always are our first Priority
+and they are Fulfilled from a click of
+a Button, Leave a 
+</p>
+            <h1 style="width: 100%; text-align: end; padding: 0; margin: 0 25px; margin-top: 0; font-size: 14vw;">This works</h1>
+        </div>
+
+        <div class="three-grids row" style="margin-top: 90px;">
+            <div class="hide">
+                <div style="height: 100vh;background-color: #D9D9D9;"></div>
+            </div>
+            <div><h2 style="font-size: 50px; font-weight: 700;"><i style="font-family: monospace; color: transparent;">..</i><i style="font-size: 100%; font-family:monospace;">01</i> It works by</h2>
+                <br><br><br>
+            <p style="width: 100%; padding-left: 26px; text-wrap: wrap;"> thatawof nawnfo nawofnoa STUVHLqF0 jN2JXq DPoap7W egwiSevu aofwGnCm  UFuWo0 DTpW0C tFiLIsFK 7rx62ZD uZ0YUqa KFN6OW OgSiStK thatawof nawnfo nawofnoa STUVHLqF0 jN2JXq DPoap7W egwiSevu aofwGnCm  UFuWo0 DTpW0C tFiLIsFK 7rx62ZD uZ0YUqa KFN6OW OgSiStK thatawof nawnfo nawofnoa STUVHLqF0 jN2JXq DPoap7W egwiSevu aofwGnCm  UFuWo0 DTpW0C tFiLIsFK 7rx62ZD uZ0YUqa KFN6OW OgSiStK</p>
+            <div class="three-grids row">
+                <div style="padding: 0; margin: 0;">
+                    <p style="padding: 0; margin: 0; width: 100%; text-wrap: wrap;"> thatawof nawnfo nawofnoa STUVHLqF0 jN2JXq DPoap7W egwiSevu aofwGnCm  UFuWo0 DTpW0C tFiLIsFK 7rx62ZD uZ0YUqa KFN6OW OgSiStK</p>
+                </div>
+                <div style="padding: 0; margin: 0;">
+                    <p style="padding: 0; margin: 0; width: 100%; text-wrap: wrap;">apmgawm STUVHLqF0 jN2JXq DPoap7W egwiSevu aofwGnCm  UFuWo0 DTpW0C tFiLIsFK 7rx62ZD uZ0YUqa KFN6O WOgSiStK</p>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    let review_users = ['user','lillll','homie'];
+    let review_dates = ['26/2/24','12/5/24','2/6/24'];
+    let review_titles = ['Performence','Services','Website'];
+    let review_bodies = [`"This website has solved countless
+problems for students aiming to
+study abroad. With the guidance
+of more experienced peers,
+their choices
+`,`"This website has solved countless
+problems for students aiming to
+study abroad. With the guidance
+of more experienced peers,
+their choices
+`,`"This website has solved countless
+problems for students aiming to
+study abroad. With the guidance
+of more experienced peers,
+their choices
+`];
+    for (let i = 0; i < 3; i++)
+    document.getElementById("reviews").innerHTML += `<div class="inside_card border-radius-card bottom_b top_b left_b right_b">
+<div class="row" style="margin-bottom: 25px; gap: 5px;"><i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-regular fa-star-half-alt"></i>
+<i class="fa-regular fa-star"></i>
+<i class="fa-regular fa-star"></i>
+</div>
+<h3>${review_titles[i]}</h3>
+<p style="padding: 0 2px;" class="text_short">${review_bodies[i]}</p>
+<div class="row">
+<img class="left_b right_b top_b bottom_b" alt="">
+<div class="column"><p>${review_users[i]}</p><p class="text_short">${review_dates[i]}</p></div>
+</div>
+</div>`;
+</script>
